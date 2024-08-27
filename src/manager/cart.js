@@ -8,8 +8,8 @@ class CartManager {
     constructor() {
         this.carts = [];   // propiedad carts que arranca como array vacío
         this.ultId = 0;     // propiedad ultId que arranca en 0
-        if (!fs.existsSync(PATH)) {
-            this.init().then(r => console.log("Archivo de carritos creado"));
+        if(!fs.existsSync(PATH)){
+            this.init();
         } else {
             console.log("Carts file found")
         }
@@ -19,8 +19,8 @@ class CartManager {
         //Aquí voy a crear el archivo
         await fs.promises.writeFile(PATH, JSON.stringify([]))
 
-        //dentro del constructor, en cada instancia de CartManager, se debe leer el archivo de carritos y cargarlo
-        await this.cargarCarrito()
+        // //dentro del constructor, en cada instancia de CartManager, se debe leer el archivo de carritos y cargarlo
+        // await this.cargarCarrito()
 
     }
     async cargarCarrito() {
