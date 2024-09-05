@@ -1,57 +1,46 @@
 [
-	{
-		"id": 1,
-		"title": "Producto1",
-		"description": "Descripcion1",
-		"code": "Codigo1",
-		"price": 100,
-		"status": true,
-		"stock": 100000,
-		"category": "Categoria1",
-		"thumbnail": "imagen1.jpg"
-	},
-	{
-		"id": 2,
-		"title": "Producto2",
-		"description": "Descripcion2",
-		"code": "Codigo2",
-		"price": 200,
-		"status": true,
-		"stock": 2,
-		"category": "Categoria2",
-		"thumbnail": "imagen2.jpg"
-	},
-	{
-		"id": 3,
-		"title": "Producto3",
-		"description": "Descripcion3",
-		"code": "Codigo3",
-		"price": 300,
-		"status": true,
-		"stock": 3,
-		"category": "Categoria3",
-		"thumbnail": "imagen3.jpg"
-	},
-	{
-		"id": 4,
-		"title": "Producto4",
-		"description": "Descripcion4",
-		"code": "Codigo4",
-		"price": 400,
-		"status": true,
-		"stock": 4,
-		"category": "Categoria4",
-		"thumbnail": "imagen4.jpg"
-	},
-	{
-		"id": 5,
-		"title": "Producto5",
-		"description": "Descripcion5",
-		"code": "Codigo5",
-		"price": 500,
-		"status": true,
-		"stock": 5,
-		"category": "Categoria5",
-		"thumbnail": "imagen5.jpg"
-	}
+  {
+    "id": 1,
+    "title": "Papas Fritas Lays 180grs",
+    "description": "Papas Fritas Lays 180grs",
+    "code": "Codigo1",
+    "price": 100,
+    "status": true,
+    "stock": 100000,
+    "category": "Categoria1",
+    "thumbnail": "imagen1.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Queso Fimbo",
+    "description": "Queso fimbo 100 grs",
+    "code": "Codigo2",
+    "price": 200,
+    "status": true,
+    "stock": 2,
+    "category": "Categoria2",
+    "thumbnail": "imagen2.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Salame picado fino",
+    "description": "Salame picado fino 100 grs",
+    "code": "Codigo3",
+    "price": 300,
+    "status": true,
+    "stock": 3,
+    "category": "Categoria3",
+    "thumbnail": "imagen3.jpg"
+  },
+  {
+    "id": 4,
+    "title": "Pan Lactal",
+    "description": "Pan Lactal 400 grs",
+    "code": "Codigo4",
+    "price": 400,
+    "status": true,
+    "stock": 4,
+    "category": "Categoria4",
+    "thumbnail": "imagen4.jpg"
+  }
 ]
