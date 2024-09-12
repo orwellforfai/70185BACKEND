@@ -5,23 +5,12 @@
     "products": [
       {
         "id": 1,
-        "cantidad": null
+        "cantidad": 39
+      },
+      {
+        "id": 2,
+        "cantidad": 30
       }
     ]
-  },
-  {
-    "id": 14,
-    "timestamp": 1724941667692,
-    "products": []
-  },
-  {
-    "id": 15,
-    "timestamp": 1724941669139,
-    "products": []
-  },
-  {
-    "id": 16,
-    "timestamp": 1724941670311,
-    "products": []
   }
 ]

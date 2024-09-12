@@ -61,23 +61,26 @@ export default class CartManager {
 
     async agregarProductoAlCarrito(carritoId, productId, cantidad) {
         try {
-            const carrito = this.carts.find(cart => cart.id === carritoId)
+            const carrito = this.carts.find(cart => cart.id === carritoId);
+
             if (!carrito) {
-                return {
-                    error: 'carrito no encontrado'
-                }
+                return {error: 'carrito no encontrado'};
             }
-            const producto = {
-                id: productId,
-                cantidad
+            const index = carrito.products.findIndex(product => product.id === productId);
+            if (index === -1) {
+                const producto = {
+                    id: productId,
+                    cantidad
+                };
+                carrito.products.push(producto);
+            } else {
+                carrito.products[index].cantidad += cantidad;
             }
-            carrito.products.push(producto)
-            await this.saveCarts()
-            return carrito
+
+            await this.saveCarts();
+            return carrito;
         } catch (error) {
-            console.log("Error", error)
+            console.log("Error", error);
         }
     }
-
-
 }

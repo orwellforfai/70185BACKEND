@@ -1,4 +1,4 @@
-import express   from "express";
+import express from "express";
 import CartManager from '../manager/cart.js';
 
 
@@ -49,13 +49,15 @@ router.post('/carts', async (request, response) => {
 )
 
 router.post('/carts/:id/product/:id_producto', async (request, response) => {
-    const id = parseInt(request.params.id)
-    const id_producto = parseInt(request.params.id_producto)
+
+    const {id, id_producto} = request.params
+    const id_parseado = parseInt(id)
+    const id_producto_parseado = parseInt(id_producto)
 
     let cantidad = parseInt(request.body.cantidad)
 
     try {
-        const actualizarCarrito = await cartManager.agregarProductoAlCarrito(id, id_producto, cantidad)
+        const actualizarCarrito = await cartManager.agregarProductoAlCarrito(id_parseado, id_producto_parseado, cantidad)
         response.send(actualizarCarrito)
 
 
