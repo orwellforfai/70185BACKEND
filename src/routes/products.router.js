@@ -88,4 +88,36 @@ router.delete('/products/:id', async (request, response) => {
     }
 })
 
+
+//Agrego estos dos post para usarlos con Socket io
+router.post('/products', async (req, res) => {
+    try {
+        const producto = req.body;
+        await productManager.addProduct(producto);
+
+        const io = req.app.get('io');
+        io.emit('productos', await productManager.getProducts());
+
+        res.status(201).send('Producto agregado');
+    } catch (err) {
+        res.status(500).send('Error al agregar producto');
+    }
+});
+
+router.delete('/products/:id', async (req, res) => {
+    try {
+        const id = req.params.id;
+        await productManager.deleteProduct(id);
+
+        const io = req.app.get('io');
+        io.emit('productos', await productManager.getProducts());
+
+        res.status(200).send('Producto eliminado');
+    } catch (err) {
+        res.status(500).send('Error al eliminar producto');
+    }
+});
+
+
+
 export default router;

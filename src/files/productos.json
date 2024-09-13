@@ -31,5 +31,16 @@
 		"stock": 3,
 		"category": "Categoria3",
 		"thumbnail": "imagen3.jpg"
+	},
+	{
+		"id": 4,
+		"title": "Papas Fritas Lays 250grs",
+		"description": "'Papas Fritas Lays",
+		"code": "codigo5",
+		"price": "500",
+		"status": true,
+		"stock": "500",
+		"category": "categoria5",
+		"thumbnail": "xx.jpg"
 	}
 ]

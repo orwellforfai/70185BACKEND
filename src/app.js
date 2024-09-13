@@ -37,6 +37,8 @@ const httpServer = app.listen(PORT, () => console.log(`Listening on ${PORT}`));
 const io = new Server(httpServer);
 
 // Websocket use
+app.set("io", io);
+
 io.on("connection", async (socket) => {
     console.log("Un cliente conectado");
 

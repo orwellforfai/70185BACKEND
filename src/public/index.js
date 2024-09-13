@@ -25,7 +25,9 @@ const renderProductos = (productos) => {
 };
 
 const eliminarProducto = (id) => {
-    socket.emit("eliminarProducto", id);
+    fetch(`/api/products/${id}`, {
+        method: 'DELETE'
+    });
 };
 
 document.getElementById("btnEnviar").addEventListener("click", () => {
@@ -41,7 +43,14 @@ const agregarProducto = () => {
         code: document.getElementById("code").value,
         stock: document.getElementById("stock").value,
         category: document.getElementById("category").value,
+        thumbnail: document.getElementById("thumbnail").value,
         status: document.getElementById("status").value === "true"
     };
-    socket.emit("agregarProducto", producto);
+    fetch('/api/products', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(producto)
+    });
 };
