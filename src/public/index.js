@@ -2,9 +2,7 @@ const socket = io();
 
 socket.on("productos", (data) => {
     renderProductos(data);
-})
-
-//Función para renderizar el listado de productos
+});
 
 const renderProductos = (productos) => {
     const contenedorProductos = document.getElementById("contenedorProductos");
@@ -13,31 +11,26 @@ const renderProductos = (productos) => {
     productos.forEach(item => {
         const card = document.createElement("div");
         card.innerHTML = `
-                            <p> ID: ${item.id} </p>
-                            <p> Titulo:  ${item.title} </p>
-                            <p> Precio: ${item.price} </p>
-                            <button> Eliminar producto </button>
-                        `;
+            <p>ID: ${item.id}</p>
+            <p>Titulo: ${item.title}</p>
+            <p>Precio: ${item.price}</p>
+            <button>Eliminar producto</button>
+        `;
         contenedorProductos.appendChild(card);
 
-        //Agregamos el evento al boton de eliminar producto:
         card.querySelector("button").addEventListener("click", () => {
-            eliminarProducto(item.id)
-        })
-    })
-}
-
-//Eliminar producto:
+            eliminarProducto(item.id);
+        });
+    });
+};
 
 const eliminarProducto = (id) => {
     socket.emit("eliminarProducto", id);
-}
-
-//Agregar producto:
+};
 
 document.getElementById("btnEnviar").addEventListener("click", () => {
     agregarProducto();
-})
+});
 
 const agregarProducto = () => {
     const producto = {
@@ -51,4 +44,4 @@ const agregarProducto = () => {
         status: document.getElementById("status").value === "true"
     };
     socket.emit("agregarProducto", producto);
-}
+};

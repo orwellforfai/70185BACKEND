@@ -7,11 +7,14 @@ import { engine } from 'express-handlebars';
 import path from 'path';
 import __dirname from './utils.js';
 import {Server} from 'socket.io';
-import productsSocket from './sockets/productsSocket.js';
+import ProductManager from "./manager/productos.js";
 
 
 // App Express
 const app = express();
+
+// Product Manager
+const productManager = new ProductManager();
 
 // Set up Handlebars
 app.engine('handlebars', engine());
@@ -34,10 +37,18 @@ const httpServer = app.listen(PORT, () => console.log(`Listening on ${PORT}`));
 const io = new Server(httpServer);
 
 // Websocket use
-io.on('connection', (socket) => {
-    console.log('New connection');
+io.on("connection", async (socket) => {
+    console.log("Un cliente conectado");
 
-    socket.on('message', (data) => {
-      productsSocket(socket)
+    socket.emit("productos", await productManager.getProducts());
+
+    socket.on("eliminarProducto", async (id) => {
+        await productManager.deleteProduct(id);
+        socket.emit("productos", await productManager.getProducts());
     });
-})
+
+    socket.on("agregarProducto", async (producto) => {
+        await productManager.addProduct(producto);
+        socket.emit("productos", await productManager.getProducts());
+    });
+});
