@@ -11,15 +11,15 @@ const renderProductos = (productos) => {
     productos.forEach(item => {
         const card = document.createElement("div");
         card.innerHTML = `
-            <p>ID: ${item.id}</p>
             <p>Titulo: ${item.title}</p>
             <p>Precio: ${item.price}</p>
-            <button>Eliminar producto</button>
+            <button data-id="${item._id}">Eliminar producto</button>
         `;
         contenedorProductos.appendChild(card);
 
-        card.querySelector("button").addEventListener("click", () => {
-            eliminarProducto(item.id);
+        card.querySelector("button").addEventListener("click", (event) => {
+            const id = event.target.getAttribute("data-id");
+            eliminarProducto(id);
         });
     });
 };
@@ -39,7 +39,6 @@ const agregarProducto = () => {
         title: document.getElementById("title").value,
         description: document.getElementById("description").value,
         price: document.getElementById("price").value,
-        img: document.getElementById("img").value,
         code: document.getElementById("code").value,
         stock: document.getElementById("stock").value,
         category: document.getElementById("category").value,

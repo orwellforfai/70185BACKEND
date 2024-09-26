@@ -1,5 +1,6 @@
 // Imports
 import express from 'express';
+import mongoose from "mongoose";
 import productsRouter from './routes/products.router.js';
 import cartRouter from './routes/cart.router.js';
 import viewsRouter from './routes/views.router.js';
@@ -8,6 +9,7 @@ import path from 'path';
 import __dirname from './utils.js';
 import {Server} from 'socket.io';
 import ProductManager from "./manager/productos.js";
+
 
 
 // App Express
@@ -24,11 +26,20 @@ app.set('view engine', 'handlebars');
 // Middlewares
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')))
+//TODO ver si hay que agregar dentro de public la carpeta static
+
 
 // Routes
 app.use('/', viewsRouter);
 app.use('/api', productsRouter);
 app.use('/api', cartRouter);
+
+// Database connection
+mongoose.connect('mongodb+srv://martinkitesurf:wqUVIjwZlJcUA0nA@martintestmongo.binhn.mongodb.net/ecommerce?retryWrites=true&w=majority&appName=martintestmongo', {
+
+})
+    .then(() => console.log('Conexión exitosa con MongoDB'))
+    .catch((err) => console.log(err));
 
 
 // Server Definition
